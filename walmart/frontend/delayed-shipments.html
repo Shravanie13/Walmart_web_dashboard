@@ -1,0 +1,84 @@
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Delayed Shipments | Walmart Supply Chain Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold text-primary" href="dashboard.html"><i class="fas fa-warehouse"></i> Walmart Logistics</a>
+      <span class="mx-3 text-muted"><i class="fas fa-map-marker-alt"></i> Dallas DC | <i class="fas fa-truck"></i> On-time Delivery</span>
+      <form class="d-flex mx-auto" style="max-width:400px;">
+        <input class="form-control me-2" type="search" placeholder="Search SKUs, Warehouses, Metrics..." aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-bell"></i></a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Sign In</a></li>
+        <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Sticky Menu Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <ul class="navbar-nav flex-row">
+        <li class="nav-item mx-2"><a class="nav-link" href="logistics-metrics.html">Logistics Metrics</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="transport-modes.html">Transport Modes</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="vendor-performance.html">Vendor Performance</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="urgent-shipments.html">Urgent Shipments</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="new-arrivals.html">New Arrivals</a></li>
+        <li class="nav-item mx-2"><a class="nav-link active" href="delayed-shipments.html">Delayed Shipments</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="trending-skus.html">Trending SKUs</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="festive-stock-surge.html">Festive Stock Surge</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container my-5">
+    <div class="card shadow-lg p-4 text-center">
+      <h2 class="fw-bold text-danger mb-2"><i class="fas fa-shipping-fast"></i> Delayed Shipments</h2>
+      <p class="lead">Review and analyze shipments that have been delayed in the supply chain.</p>
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-3">
+          <div class="card border-danger">
+            <div class="card-body">
+              <h5 class="card-title text-danger"><i class="fas fa-route"></i> Top Delayed Routes</h5>
+              <p class="card-text">Routes with the most frequent or longest delays.</p>
+              <button class="btn btn-outline-danger btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card border-warning">
+            <div class="card-body">
+              <h5 class="card-title text-warning"><i class="fas fa-box-open"></i> Delayed Products</h5>
+              <p class="card-text">Products most affected by shipment delays.</p>
+              <button class="btn btn-outline-warning btn-sm">Analyze Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card border-info">
+            <div class="card-body">
+              <h5 class="card-title text-info"><i class="fas fa-chart-bar"></i> Delay Analytics</h5>
+              <p class="card-text">Detailed analytics on delay causes and trends.</p>
+              <button class="btn btn-outline-info btn-sm">View Report</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

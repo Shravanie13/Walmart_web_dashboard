@@ -1,0 +1,35 @@
+\walmart\frontend\style.css */
+body {
+  background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.icon {
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.img-fluid {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+  .container, .card, .img-fluid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}

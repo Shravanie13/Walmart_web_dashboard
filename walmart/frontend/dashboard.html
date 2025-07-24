@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Walmart Supply Chain Dashboard</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <!-- Chart.js for interactive charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold text-primary" href="dashboard.html"><i class="fas fa-warehouse"></i> Walmart Logistics</a>
+      <span class="mx-3 text-muted"><i class="fas fa-map-marker-alt"></i> Dallas DC | <i class="fas fa-truck"></i> On-time Delivery</span>
+      <form class="d-flex mx-auto" style="max-width:400px;">
+        <input class="form-control me-2" type="search" placeholder="Search SKUs, Warehouses, Metrics..." aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-bell"></i></a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Sign In</a></li>
+        <li class="nav-item"><a class="nav-link active" href="dashboard.html">Dashboard</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Sticky Menu Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <ul class="navbar-nav flex-row">
+        <li class="nav-item dropdown mx-2">
+          <a class="nav-link dropdown-toggle" href="logistics-metrics.html" id="metricsDropdown" role="button" data-bs-toggle="dropdown">Logistics Metrics</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="logistics-metrics.html#inventory-turnover">Inventory Turnover</a></li>
+            <li><a class="dropdown-item" href="logistics-metrics.html#order-fulfillment">Order Fulfillment</a></li>
+            <li><a class="dropdown-item" href="logistics-metrics.html#lead-time">Lead Time</a></li>
+          </ul>
+        </li>
+        <li class="nav-item mx-2"><a class="nav-link" href="transport-modes.html">Transport Modes</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="vendor-performance.html">Vendor Performance</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="urgent-shipments.html">Urgent Shipments</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="new-arrivals.html">New Arrivals</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="delayed-shipments.html">Delayed Shipments</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="trending-skud.html">Trending SKUs</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="festive-stock-surge.html">Festive Stock Surge</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <div class="container my-4">
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="card shadow-lg p-4 text-center">
+          <img src="walmartimg.jpg" alt="Walmart Retail Outlet" class="img-fluid rounded mb-3" style="max-height:260px; object-fit:cover;">
+          <h2 class="fw-bold text-primary mb-2">Total Stock Value: <span id="revenue">$0</span></h2>
+          <p class="lead">Warehouse Performance Overview</p>
+          <button class="btn btn-primary">View Report</button>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title text-danger"><i class="fas fa-route"></i> Top Delayed Routes</h5>
+            <ul class="list-group list-group-flush" id="delayed-routes">
+              <li class="list-group-item">Dallas → Houston (2h delay)</li>
+              <li class="list-group-item">Atlanta → Miami (1.5h delay)</li>
+            </ul>
+            <button class="btn btn-outline-danger mt-2">Analyze Now</button>
+          </div>
+        </div>
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title text-warning"><i class="fas fa-box-open"></i> Low-stock Products</h5>
+            <ul class="list-group list-group-flush" id="low-stock">
+              <li class="list-group-item">SKU 12345 - 10 units</li>
+              <li class="list-group-item">SKU 67890 - 5 units</li>
+            </ul>
+            <button class="btn btn-outline-warning mt-2">View Report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Cards -->
+  <div class="container mb-4">
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-3">
+        <div class="card text-center shadow-sm rounded-4">
+          <div class="card-body">
+            <span class="icon"><i class="fas fa-shopping-cart fa-2x text-primary"></i></span>
+            <h5 class="card-title">Total Orders</h5>
+            <p class="card-text" id="orders">0</p>
+            <button class="btn btn-outline-primary btn-sm">View Report</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center shadow-sm rounded-4">
+          <div class="card-body">
+            <span class="icon"><i class="fas fa-truck fa-2x text-success"></i></span>
+            <h5 class="card-title">Transportation Cost</h5>
+            <p class="card-text" id="transport">$0</p>
+            <button class="btn btn-outline-success btn-sm">Analyze Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center shadow-sm rounded-4">
+          <div class="card-body">
+            <span class="icon"><i class="fas fa-check-circle fa-2x text-info"></i></span>
+            <h5 class="card-title">Fulfillment Rate</h5>
+            <p class="card-text" id="fulfillment">0%</p>
+            <button class="btn btn-outline-info btn-sm">View Report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Chart Section -->
+  <div class="container mb-5">
+    <div class="card shadow-sm p-4">
+      <h4 class="mb-3">Weekly Sales Trend</h4>
+      <canvas id="salesChart" height="120"></canvas>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
