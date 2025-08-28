@@ -4,137 +4,194 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Walmart Supply Chain Dashboard</title>
-  <!-- Bootstrap 5 CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome for icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-  <!-- Chart.js for interactive charts -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <!-- Top Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold text-primary" href="dashboard.html"><i class="fas fa-warehouse"></i> Walmart Logistics</a>
-      <span class="mx-3 text-muted"><i class="fas fa-map-marker-alt"></i> Dallas DC | <i class="fas fa-truck"></i> On-time Delivery</span>
-      <form class="d-flex mx-auto" style="max-width:400px;">
-        <input class="form-control me-2" type="search" placeholder="Search SKUs, Warehouses, Metrics..." aria-label="Search">
-        <button class="btn btn-outline-primary" type="submit"><i class="fas fa-search"></i></button>
-      </form>
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-bell"></i></a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Sign In</a></li>
-        <li class="nav-item"><a class="nav-link active" href="dashboard.html">Dashboard</a></li>
-      </ul>
-    </div>
-  </nav>
+<body class="bg-gradient-to-br from-blue-50 via-white to-blue-100 min-h-screen">
 
-  <!-- Sticky Menu Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-      <ul class="navbar-nav flex-row">
-        <li class="nav-item dropdown mx-2">
-          <a class="nav-link dropdown-toggle" href="logistics-metrics.html" id="metricsDropdown" role="button" data-bs-toggle="dropdown">Logistics Metrics</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="logistics-metrics.html#inventory-turnover">Inventory Turnover</a></li>
-            <li><a class="dropdown-item" href="logistics-metrics.html#order-fulfillment">Order Fulfillment</a></li>
-            <li><a class="dropdown-item" href="logistics-metrics.html#lead-time">Lead Time</a></li>
-          </ul>
-        </li>
-        <li class="nav-item mx-2"><a class="nav-link" href="transport-modes.html">Transport Modes</a></li>
-        <li class="nav-item mx-2"><a class="nav-link" href="vendor-performance.html">Vendor Performance</a></li>
-        <li class="nav-item mx-2"><a class="nav-link" href="urgent-shipments.html">Urgent Shipments</a></li>
-        <li class="nav-item mx-2"><a class="nav-link" href="new-arrivals.html">New Arrivals</a></li>
-        <li class="nav-item mx-2"><a class="nav-link" href="delayed-shipments.html">Delayed Shipments</a></li>
-        <li class="nav-item mx-2"><a class="nav-link" href="trending-skud.html">Trending SKUs</a></li>
-        <li class="nav-item mx-2"><a class="nav-link" href="festive-stock-surge.html">Festive Stock Surge</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Hero Banner -->
-  <div class="container my-4">
-    <div class="row g-4">
-      <div class="col-lg-8">
-        <div class="card shadow-lg p-4 text-center">
-          <img src="walmartimg.jpg" alt="Walmart Retail Outlet" class="img-fluid rounded mb-3" style="max-height:260px; object-fit:cover;">
-          <h2 class="fw-bold text-primary mb-2">Total Stock Value: <span id="revenue">$0</span></h2>
-          <p class="lead">Warehouse Performance Overview</p>
-          <button class="btn btn-primary">View Report</button>
-        </div>
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-2xl rounded-tr-2xl rounded-br-2xl flex flex-col py-8 px-4 fixed inset-y-0 left-0 z-20 border-r border-blue-100">
+      <div class="mb-10 flex items-center gap-2 px-2 py-2 bg-blue-50 rounded-xl shadow">
+        <i class="fas fa-warehouse text-blue-600 text-2xl"></i>
+        <span class="font-bold text-xl text-blue-700 tracking-wide">Walmart Logistics</span>
       </div>
-      <div class="col-lg-4">
-        <div class="card mb-3 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title text-danger"><i class="fas fa-route"></i> Top Delayed Routes</h5>
-            <ul class="list-group list-group-flush" id="delayed-routes">
-              <li class="list-group-item">Dallas → Houston (2h delay)</li>
-              <li class="list-group-item">Atlanta → Miami (1.5h delay)</li>
-            </ul>
-            <button class="btn btn-outline-danger mt-2">Analyze Now</button>
+      <nav class="flex-1">
+        <ul class="space-y-2">
+          <li>
+            <a href="dashboard.html" class="flex items-center gap-3 px-4 py-2 rounded-xl bg-blue-100 text-blue-700 font-semibold">
+              <i class="fas fa-chart-bar text-lg"></i> Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="logistics_metrics.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-blue-50 text-blue-700 font-medium transition">
+              <i class="fas fa-truck text-lg"></i> Logistics Metrics
+            </a>
+          </li>
+          <li>
+            <a href="vendor_performance.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-blue-50 text-blue-700 font-medium transition">
+              <i class="fas fa-handshake text-lg"></i> Vendor Performance
+            </a>
+          </li>
+          <li>
+            <a href="transport.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-blue-50 text-blue-700 font-medium transition">
+              <i class="fas fa-shipping-fast text-lg"></i> Transport
+            </a>
+          </li>
+          <li>
+            <a href="reports.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-blue-50 text-blue-700 font-medium transition">
+              <i class="fas fa-file-alt text-lg"></i> Reports
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="mt-auto px-4">
+        <button class="w-full py-2 rounded-xl bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition">
+          Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 ml-64 flex flex-col min-h-screen">
+      <!-- Top Navbar -->
+      <nav class="bg-white shadow flex items-center justify-between px-8 py-4 rounded-bl-2xl border-b border-blue-100">
+        <div class="flex items-center gap-4">
+          <i class="fas fa-bars text-blue-600 text-2xl"></i>
+          <span class="text-lg font-semibold text-blue-700 tracking-wide">Dashboard</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="rounded-xl px-4 py-2 border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-200"
+          />
+          <i class="fas fa-bell text-blue-500 text-xl"></i>
+          <img
+            src="https://randomuser.me/api/portraits/men/32.jpg"
+            alt="User"
+            class="w-9 h-9 rounded-full border-2 border-blue-200"
+          />
+        </div>
+      </nav>
+
+      <!-- Welcome Message -->
+      <section class="px-8 py-6">
+        <h1 class="text-2xl font-bold text-blue-800 mb-1">
+          Welcome back, Logistics Manager!
+        </h1>
+        <p class="text-blue-500">
+          Here’s an overview of your supply chain performance today.
+        </p>
+      </section>
+
+      <!-- KPI Cards -->
+      <section class="px-8 pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Total Stock Value -->
+        <div class="rounded-2xl shadow-lg p-6 bg-blue-100 flex flex-col items-start hover:scale-105 hover:shadow-2xl transition">
+          <div class="rounded-xl p-3 mb-4 bg-white shadow text-blue-600">
+            <i class="fas fa-coins text-2xl"></i>
+          </div>
+          <div class="text-3xl font-bold text-blue-900 mb-1" id="revenue">$1,250,000</div>
+          <div class="text-blue-600 font-medium">Total Stock Value</div>
+        </div>
+        <!-- Total Orders -->
+        <div class="rounded-2xl shadow-lg p-6 bg-green-100 flex flex-col items-start hover:scale-105 hover:shadow-2xl transition">
+          <div class="rounded-xl p-3 mb-4 bg-white shadow text-green-600">
+            <i class="fas fa-shopping-cart text-2xl"></i>
+          </div>
+          <div class="text-3xl font-bold text-green-900 mb-1" id="orders">2,340</div>
+          <div class="text-green-600 font-medium">Total Orders</div>
+        </div>
+        <!-- Transportation Cost -->
+        <div class="rounded-2xl shadow-lg p-6 bg-yellow-100 flex flex-col items-start hover:scale-105 hover:shadow-2xl transition">
+          <div class="rounded-xl p-3 mb-4 bg-white shadow text-yellow-600">
+            <i class="fas fa-truck-moving text-2xl"></i>
+          </div>
+          <div class="text-3xl font-bold text-yellow-900 mb-1" id="transport">$45,000</div>
+          <div class="text-yellow-600 font-medium">Transportation Cost</div>
+        </div>
+        <!-- Fulfillment Rate -->
+        <div class="rounded-2xl shadow-lg p-6 bg-indigo-100 flex flex-col items-start hover:scale-105 hover:shadow-2xl transition">
+          <div class="rounded-xl p-3 mb-4 bg-white shadow text-indigo-600">
+            <i class="fas fa-check-circle text-2xl"></i>
+          </div>
+          <div class="text-3xl font-bold text-indigo-900 mb-1" id="fulfillment">98%</div>
+          <div class="text-indigo-600 font-medium">Fulfillment Rate</div>
+        </div>
+      </section>
+
+      <!-- Dashboard Analytics Section -->
+      <section class="px-8 pb-8">
+        <div class="rounded-2xl shadow-lg bg-white p-6 flex flex-col lg:flex-row gap-8 items-center">
+          <div class="flex-1">
+            <h2 class="text-xl font-bold text-blue-800 mb-2 flex items-center gap-2">
+              <i class="fas fa-chart-line text-blue-600"></i>
+              Sales Trend (Last 4 Weeks)
+            </h2>
+            <canvas id="salesChart" class="w-full max-w-xl"></canvas>
+          </div>
+          <div class="flex-1 flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+              <span class="inline-block w-3 h-3 rounded-full bg-blue-500"></span>
+              <span class="text-blue-700 font-semibold">This Month</span>
+              <span class="ml-auto text-blue-900 font-bold">$1,800,000</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="inline-block w-3 h-3 rounded-full bg-gray-300"></span>
+              <span class="text-blue-400">Last Month</span>
+              <span class="ml-auto text-blue-700 font-semibold">$1,600,000</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="inline-block w-3 h-3 rounded-full bg-green-400"></span>
+              <span class="text-green-700">Growth</span>
+              <span class="ml-auto text-green-700 font-semibold">+12.5%</span>
+            </div>
           </div>
         </div>
-        <div class="card mb-3 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title text-warning"><i class="fas fa-box-open"></i> Low-stock Products</h5>
-            <ul class="list-group list-group-flush" id="low-stock">
-              <li class="list-group-item">SKU 12345 - 10 units</li>
-              <li class="list-group-item">SKU 67890 - 5 units</li>
-            </ul>
-            <button class="btn btn-outline-warning mt-2">View Report</button>
-          </div>
-        </div>
-      </div>
+      </section>
+
+      <!-- Chart.js CDN and Chart Script -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+            datasets: [{
+              label: 'Sales',
+              data: [1500000, 1700000, 1600000, 1800000],
+              backgroundColor: 'rgba(0,113,206,0.1)',
+              borderColor: '#0071ce',
+              borderWidth: 3,
+              pointBackgroundColor: '#fff',
+              tension: 0.4,
+              fill: true,
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              y: {
+                beginAtZero: false,
+                ticks: {
+                  callback: value => '$' + value.toLocaleString()
+                }
+              }
+            }
+          }
+        });
+      </script>
+
+      <!-- Footer -->
+      <footer class="mt-auto px-8 py-4 bg-white rounded-tl-2xl border-t border-blue-100 text-right text-blue-400 text-sm">
+        &copy; 2025 Walmart Supply Chain Dashboard. All rights reserved.
+      </footer>
     </div>
   </div>
-
-  <!-- Dashboard Cards -->
-  <div class="container mb-4">
-    <div class="row g-4 justify-content-center">
-      <div class="col-md-3">
-        <div class="card text-center shadow-sm rounded-4">
-          <div class="card-body">
-            <span class="icon"><i class="fas fa-shopping-cart fa-2x text-primary"></i></span>
-            <h5 class="card-title">Total Orders</h5>
-            <p class="card-text" id="orders">0</p>
-            <button class="btn btn-outline-primary btn-sm">View Report</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-center shadow-sm rounded-4">
-          <div class="card-body">
-            <span class="icon"><i class="fas fa-truck fa-2x text-success"></i></span>
-            <h5 class="card-title">Transportation Cost</h5>
-            <p class="card-text" id="transport">$0</p>
-            <button class="btn btn-outline-success btn-sm">Analyze Now</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-center shadow-sm rounded-4">
-          <div class="card-body">
-            <span class="icon"><i class="fas fa-check-circle fa-2x text-info"></i></span>
-            <h5 class="card-title">Fulfillment Rate</h5>
-            <p class="card-text" id="fulfillment">0%</p>
-            <button class="btn btn-outline-info btn-sm">View Report</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Interactive Chart Section -->
-  <div class="container mb-5">
-    <div class="card shadow-sm p-4">
-      <h4 class="mb-3">Weekly Sales Trend</h4>
-      <canvas id="salesChart" height="120"></canvas>
-    </div>
-  </div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
